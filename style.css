@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft Sans Serif', 'Tahoma', 'Segoe UI', sans-serif;
+    background: #008080;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+.desktop {
+    flex: 1;
+    position: relative;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+}
+
+.shortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85px;
+    cursor: pointer;
+    padding: 6px 4px;
+    border: 1px solid transparent;
+}
+
+.shortcut:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px dotted rgba(255, 255, 255, 0.9);
+}
+
+.shortcut:active {
+    background: rgba(0, 0, 128, 0.5);
+    border: 1px dotted white;
+}
+
+.shortcut-icon {
+    font-size: 42px;
+    filter: drop-shadow(1px 2px 0 rgba(0,0,0,0.4));
+    margin-bottom: 4px;
+}
+
+.shortcut-label {
+    font-size: 12px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    text-align: center;
+}
+
+.taskbar {
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    height: 38px;
+    padding: 0 4px;
+    box-shadow: inset 0 1px 0 #dfdfdf, 0 -1px 0 #808080;
+    flex-shrink: 0;
+}
+
+.start-button {
+    background: #c0c0c0;
+    border: none;
+    outline: 1px solid #000;
+    outline-offset: -2px;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080;
+    padding: 2px 14px 2px 10px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 32px;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.start-button:active {
+    box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #808080;
+}
+
+.taskbar-spacer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+}
+
+.click-counter-taskbar {
+    font-size: 12px;
+    font-weight: bold;
+    background: #e0e0e0;
+    padding: 2px 12px;
+    border: 1px solid #808080;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080;
+    color: black;
+}
+
+.taskbar-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    background: #c0c0c0;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    padding: 2px 10px;
+    height: 28px;
+    box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+    font-size: 13px;
+}
+
+.start-menu {
+    position: absolute;
+    bottom: 42px;
+    left: 4px;
+    width: 220px;
+    background: #c0c0c0;
+    border: 2px solid #000;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #ffffff;
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+    padding: 2px;
+}
+
+.start-menu.visible {
+    display: flex;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #000080;
+    color: white;
+}
+
+.menu-divider {
+    height: 2px;
+    background: #808080;
+    border-bottom: 1px solid #ffffff;
+    margin: 3px 4px;
+}
+
+.win-dialog {
+    position: absolute;
+    background: #c0c0c0;
+    border: 2px solid #000;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #ffffff;
+    width: 380px;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.win-dialog.active {
+    display: flex;
+}
+
+.dialog-title {
+    background: #000080;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 3px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+.dialog-close {
+    background: #c0c0c0;
+    border: 1px solid #000;
+    width: 18px;
+    height: 18px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-content {
+    padding: 14px 12px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stats-box {
+    background: white;
+    border: 2px inset #808080;
+    padding: 8px;
+    margin-bottom: 4px;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    font-size: 12px;
+}
+
+.upgrade-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dotted #808080;
+    padding: 4px 0;
+}
+
+.upgrade-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.upgrade-info small {
+    color: #404040;
+    font-size: 10px;
+}
+
+.upgrade-btn {
+    background: #c0c0c0;
+    border: 2px solid #000;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080;
+    padding: 3px 12px;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.upgrade-btn:active {
+    box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #808080;
+}
+
+.upgrade-btn:disabled {
+    color: #808080;
+    opacity: 0.7;
+}
+
+.goose-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    background: radial-gradient(circle, #a1c4fd 0%, #c2e9fb 100%);
+    margin: 6px 0;
+    border: 2px inset #808080;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+}
+
+.goose-img {
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 2px black);
+    transition: transform 0.05s;
+    z-index: 2;
+    position: relative;
+}
+
+.goose-img:active {
+    transform: scale(0.9);
+}
+
+/* Тряска при крите */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-8px) rotate(-5deg); }
+    20% { transform: translateX(8px) rotate(5deg); }
+    30% { transform: translateX(-6px) rotate(-3deg); }
+    40% { transform: translateX(6px) rotate(3deg); }
+    50% { transform: translateX(-4px) rotate(-2deg); }
+    60% { transform: translateX(4px) rotate(2deg); }
+    70% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+}
+
+.goose-img.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+.float-text {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    animation: floatUp 1.2s ease-out forwards;
+    white-space: nowrap;
+}
+
+.float-text.crit {
+    font-size: 24px;
+    color: #ff4444;
+    text-shadow: 0 0 10px rgba(255,68,68,0.8), 1px 1px 2px black;
+}
+
+.float-text.normal {
+    color: #ffcc00;
+    text-shadow: 0 0 8px rgba(255,204,0,0.6), 1px 1px 2px black;
+}
+
+.float-text.auto {
+    color: #66ccff;
+    font-size: 14px;
+    text-shadow: 0 0 6px rgba(102,204,255,0.6), 1px 1px 2px black;
+}
+
+.float-text.auto.crit {
+    color: #ff6666;
+    font-size: 18px;
+    text-shadow: 0 0 10px rgba(255,102,102,0.8), 1px 1px 2px black;
+}
+
+@keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    20% { opacity: 1; transform: translateY(-20px) scale(1.3); }
+    100% { opacity: 0; transform: translateY(-100px) scale(0.8); }
+}
+
